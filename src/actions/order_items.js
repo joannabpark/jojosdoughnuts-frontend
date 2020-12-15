@@ -21,3 +21,10 @@ export const addItemSuccess = (order_items) => {
         order_items: order_items
     }
   }
+
+  export const clearCartSuccess = () => {
+    // debugger
+    return {
+        type: 'CLEAR_CART_SUCCESS',
+    }
+  }
