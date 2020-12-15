@@ -37,6 +37,7 @@ const Shop = ({doughnuts, fetchDoughnutsSuccess}) => {
     }, [])
 
     const renderDoughnuts = () => {
+      // debugger
         return doughnuts.map((doughnut) => (
             <Doughnuts key={doughnut.id} doughnut={doughnut} />
         ))

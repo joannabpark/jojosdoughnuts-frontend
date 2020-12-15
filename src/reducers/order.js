@@ -1,13 +1,14 @@
-// const initialState = []
+const initialState = []
 
-// const order = (state=initialState, action) => {
-//     switch(action.type) {
-//         case "FETCH_ORDER_SUCCESS":
-//             // debugger
-//             return action.order
-//         default:
-//             return state
-//     }
-// }
+const order = (state=initialState, action) => {
 
-// export default order
+    switch(action.type) {
+        case 'ORDER_SUBMIT_SUCCESS':
+            // debugger
+            return [...state, action.order]
+        default:
+            return state
+    }
+}
+
+export default order
