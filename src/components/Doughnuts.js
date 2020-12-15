@@ -1,5 +1,5 @@
 import React from 'react';
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 import { Card, Image, Button } from 'semantic-ui-react'
 import { addItemSuccess } from '../actions/order_items';
 import { connect } from 'react-redux';
@@ -17,7 +17,7 @@ const Doughnuts = ({doughnut, addItemSuccess}) => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                order_id: 3,
+                user_id: 1,
                 doughnut_id: doughnut.id
             })
         }
@@ -55,7 +55,6 @@ const Doughnuts = ({doughnut, addItemSuccess}) => {
 const mapStateToProps = (state) => {
     return {
         order_items: state.order_items,
-        order: state.order
     }
 }
 

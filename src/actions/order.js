@@ -1,8 +1,8 @@
 
-  // export const fetchOrderSuccess = (order) => {
-  //   // debugger
-  //   return {
-  //       type: 'FETCH_ORDER_SUCCESS',
-  //       order: order
-  //   }
-  // }
+  export const orderSubmitSuccess = (order) => {
+    // debugger
+    return {
+        type: 'ORDER_SUBMIT_SUCCESS',
+        order: order
+    }
+  }
