@@ -28,7 +28,6 @@ const NavBar = (props) => {
         >
            <i aria-hidden="true" className="home icon"></i>Home
         </Menu.Item>
-
         <Menu.Item
           name='shop'
           active={activeItem === 'shop'}
@@ -38,7 +37,15 @@ const NavBar = (props) => {
         >
           <img src="https://img.icons8.com/ios/50/000000/doughnut.png" style={{paddingRight:"4px", width:"23px"}}/> Shop
         </Menu.Item>
-
+        <Menu.Item
+          name='View My Orders'
+          active={activeItem === 'View My Orders'}
+          onClick={handleItemClick}
+          as={Link}
+          to={'/order'}
+        >
+          View My Orders
+        </Menu.Item>
         <Menu.Item
           position="right"
           name='cart'

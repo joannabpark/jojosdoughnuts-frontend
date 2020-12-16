@@ -1,6 +1,7 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { fetchDoughnutsSuccess } from '../actions/doughnuts';
+import { currentUser } from '../actions/user';
 import { connect } from 'react-redux';
 import Doughnuts from './Doughnuts'
 import Carousel from "react-multi-carousel";
@@ -26,15 +27,33 @@ const responsive = {
     }
   };
 
-const Shop = ({doughnuts, fetchDoughnutsSuccess}) => {
+const Shop = ({currentUser, doughnuts, fetchDoughnutsSuccess}) => {
  
     useEffect(() => {
+      const token = localStorage.getItem('app_token')
+      console.log(token)
+      if (!token){
+        console.log('error')
+      } else {
+        const reqObj = {
+          method: 'GET',
+          headers: {
+            'Authorization': `Bearer ${token}`
+          },
+        }
+        fetch('http://localhost:3000/current_session', reqObj)
+        .then(resp => resp.json())
+        .then(data => {
+          if (data.user) {
+            currentUser(data.user)
         fetch("http://localhost:3000/doughnuts")
         .then(resp => resp.json())
         .then(doughnuts => {
             fetchDoughnutsSuccess(doughnuts)
-        })
-    }, [])
+             })
+           }
+          })
+      }}, [])
 
     const renderDoughnuts = () => {
       // debugger
@@ -67,12 +86,14 @@ const Shop = ({doughnuts, fetchDoughnutsSuccess}) => {
 
 const mapStateToProps = (state) => {
     return {
+       user: state.user,
         doughnuts: state.doughnuts
     }
 }
 
 const mapDispatchToProps = {
-    fetchDoughnutsSuccess
+    fetchDoughnutsSuccess,
+    currentUser
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Shop)

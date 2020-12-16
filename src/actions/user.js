@@ -12,3 +12,11 @@ export const loginSuccess = (user) => {
       user: user
     }
   }
+
+  export const fetchUserSuccess = (user) => {
+    // debugger
+    return {
+        type: 'FETCH_USER_SUCCESS',
+        user: user
+    }
+  }

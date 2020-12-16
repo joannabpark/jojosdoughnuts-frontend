@@ -7,6 +7,7 @@ import Home from '../components/Home.js';
 import Shop from '../components/Shop.js'
 import Login from '../components/Login.js'
 import Cart from '../components/Cart.js'
+import ViewOrder from '../components/ViewOrder.js'
 import {Elements} from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
 
@@ -30,9 +31,10 @@ const App = () => {
           <Route exact path="/home" component={Home}/>
           <Route exact path="/shop" component={Shop}/>
           <Route exact path="/login" component={Login}/>
+          <Route exact path='/order' component={ViewOrder}/>
           <div className="AppWrapper">
           <Elements stripe={stripePromise} options={ELEMENTS_OPTIONS}>
-          <Route exact path="/cart" component={Cart}/>
+              <Route exact path="/cart" component={Cart}/>
            </Elements>
            </div>
         </Switch>

@@ -4,6 +4,9 @@ const user = (state={}, action) => {
             return action.user
         case 'LOGOUT_SUCCESS':
             return {}
+        case 'FETCH_USER_SUCCESS':
+            // debugger
+            return action.user
         default:
             return state
     }

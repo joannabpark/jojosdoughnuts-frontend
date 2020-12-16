@@ -12,7 +12,7 @@ const Home = (props) => {
         </div>
         <div style = {{backgroundImage: `url(${SugarDoughnut})`, marginLeft: "10%", marginTop: "25px", width: '80%', backgroundSize: '100% 100%'}}> 
             <h1 style={{color:'white', fontSize:'60px', fontFamily:'arial', paddingTop:'300px'}}>ORDER ONLINE</h1>
-            <Button as={Link} to='/shop' style={{marginBottom: '300px', backgroundColor: 'pink', color:'Turquoise'}}>Begin Order</Button>
+            <Button as={Link} to='/login' style={{marginBottom: '300px', backgroundColor: 'pink', color:'Turquoise'}}>Begin Order</Button>
         </div>
         </>
     )

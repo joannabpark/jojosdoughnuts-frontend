@@ -67,7 +67,7 @@ const Field = ({
     </div>
   );
 
-const Cart = ({order_items, orderSubmitSuccess, clearCartSuccess}) => {
+const Cart = ({history, order_items, orderSubmitSuccess, clearCartSuccess}) => {
 
     const stripe = useStripe();
     const elements = useElements();
@@ -82,8 +82,7 @@ const Cart = ({order_items, orderSubmitSuccess, clearCartSuccess}) => {
       });
         
   const SubmitButton = ({processing, error, children, disabled}) => (
-    <Button
-    //  onClick={() => createLog()}      
+    <Button  
      size='large' fluid inverted color='pink'
       className={`SubmitButton ${error ? 'SubmitButton--error' : ''}`}
       type="submit"
@@ -142,6 +141,7 @@ const Cart = ({order_items, orderSubmitSuccess, clearCartSuccess}) => {
         } else {
           console.log('[PaymentMethod]', paymentMethod);
           createLog()
+          history.push('/order')
         }
       };
 
@@ -153,7 +153,7 @@ const Cart = ({order_items, orderSubmitSuccess, clearCartSuccess}) => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                user_id: 1,
+                user_id: 2,
                 total: (order_items.length * 1.85).toFixed(2),
                 items: (order_items.map(order => order.doughnut.name)).join(', ')
             })
@@ -246,7 +246,8 @@ const Cart = ({order_items, orderSubmitSuccess, clearCartSuccess}) => {
 const mapStateToProps = (state) => {
     return {
         order_items: state.order_items,
-        order: state.order
+        order: state.order,
+        user: state.order
     }
 }
 

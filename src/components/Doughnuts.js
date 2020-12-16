@@ -1,15 +1,12 @@
 import React from 'react';
-// import { useEffect } from 'react';
 import { Card, Image, Button } from 'semantic-ui-react'
 import { addItemSuccess } from '../actions/order_items';
 import { connect } from 'react-redux';
 import toaster from "toasted-notes";
 import "./styling.css";
 import Cart from './Cart';
-// import { useState, useEffect } from 'react';
 
 const Doughnuts = ({doughnut, addItemSuccess}) => {
-
     const addToCart = () => {
         const reqObj = {
             method: 'POST',
@@ -17,7 +14,7 @@ const Doughnuts = ({doughnut, addItemSuccess}) => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                user_id: 1,
+                user_id: 2,
                 doughnut_id: doughnut.id
             })
         }
