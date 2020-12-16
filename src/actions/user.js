@@ -6,6 +6,12 @@ export const loginSuccess = (user) => {
     }
   }
 
+  export const logoutSuccess = () => {
+    return {
+      type: 'LOGOUT_SUCCESS',
+    }
+  }
+
   export const currentUser = (user) => {
     return {
       type: "CURRENT_USER",
@@ -20,3 +26,10 @@ export const loginSuccess = (user) => {
         user: user
     }
   }
+
+  export const createUserSuccess = (user) => {
+    return {
+      type: "CREATE_USER_SUCCESS",
+      user: user,
+    };
+  };

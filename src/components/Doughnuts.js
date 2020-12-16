@@ -6,7 +6,14 @@ import toaster from "toasted-notes";
 import "./styling.css";
 import Cart from './Cart';
 
-const Doughnuts = ({doughnut, addItemSuccess}) => {
+const Doughnuts = ({user, doughnut, addItemSuccess}) => {
+
+    const loginAlert = () => {
+        toaster.notify("You must Login", {
+            duration: 2000
+          })
+    }
+
     const addToCart = () => {
         const reqObj = {
             method: 'POST',
@@ -14,7 +21,7 @@ const Doughnuts = ({doughnut, addItemSuccess}) => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                user_id: 2,
+                user_id: user.id,
                 doughnut_id: doughnut.id
             })
         }
@@ -42,7 +49,11 @@ const Doughnuts = ({doughnut, addItemSuccess}) => {
                 <Card.Description>{doughnut.description}</Card.Description>
             </Card.Content>
             <Card.Content extra>
+                {user.id ?
                 <Button onClick={() => addToCart()} color='pink' inverted><i aria-hidden="true" className="add icon"></i>to cart</Button>
+                : 
+                <Button onClick={loginAlert} color='pink' inverted><i aria-hidden="true" className="add icon"></i>to cart</Button>
+                  }
             </Card.Content>
         </Card>
         </>
@@ -52,6 +63,7 @@ const Doughnuts = ({doughnut, addItemSuccess}) => {
 const mapStateToProps = (state) => {
     return {
         order_items: state.order_items,
+        user: state.user
     }
 }
 

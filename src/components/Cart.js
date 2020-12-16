@@ -67,7 +67,7 @@ const Field = ({
     </div>
   );
 
-const Cart = ({history, order_items, orderSubmitSuccess, clearCartSuccess}) => {
+const Cart = ({user, history, order_items, orderSubmitSuccess, clearCartSuccess}) => {
 
     const stripe = useStripe();
     const elements = useElements();
@@ -153,7 +153,7 @@ const Cart = ({history, order_items, orderSubmitSuccess, clearCartSuccess}) => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                user_id: 2,
+                user_id: user.id,
                 total: (order_items.length * 1.85).toFixed(2),
                 items: (order_items.map(order => order.doughnut.name)).join(', ')
             })
@@ -247,7 +247,7 @@ const mapStateToProps = (state) => {
     return {
         order_items: state.order_items,
         order: state.order,
-        user: state.order
+        user: state.user
     }
 }
 

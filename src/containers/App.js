@@ -5,9 +5,9 @@ import Intro from '../components/Intro'
 import NavBar from '../components/NavBar.js';
 import Home from '../components/Home.js';
 import Shop from '../components/Shop.js'
-import Login from '../components/Login.js'
 import Cart from '../components/Cart.js'
 import ViewOrder from '../components/ViewOrder.js'
+import Signup from '../components/Signup.js'
 import {Elements} from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
 
@@ -30,8 +30,8 @@ const App = () => {
           <Route exact path="/" component={Intro}/>
           <Route exact path="/home" component={Home}/>
           <Route exact path="/shop" component={Shop}/>
-          <Route exact path="/login" component={Login}/>
           <Route exact path='/order' component={ViewOrder}/>
+          <Route exact path='/signup' component={Signup}/>
           <div className="AppWrapper">
           <Elements stripe={stripePromise} options={ELEMENTS_OPTIONS}>
               <Route exact path="/cart" component={Cart}/>

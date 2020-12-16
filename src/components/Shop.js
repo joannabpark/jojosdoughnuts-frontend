@@ -33,7 +33,11 @@ const Shop = ({currentUser, doughnuts, fetchDoughnutsSuccess}) => {
       const token = localStorage.getItem('app_token')
       console.log(token)
       if (!token){
-        console.log('error')
+        fetch("http://localhost:3000/doughnuts")
+        .then(resp => resp.json())
+        .then(doughnuts => {
+            fetchDoughnutsSuccess(doughnuts)
+             })
       } else {
         const reqObj = {
           method: 'GET',
